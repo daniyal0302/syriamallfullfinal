@@ -24,6 +24,16 @@ import OrderDetail from "./pages/OrderDetail";
 import Wishlist from "./pages/Wishlist";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookiePolicy from "./pages/CookiePolicy";
+import AboutUs from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
+import Careers from "./pages/Careers";
+import HelpCenter from "./pages/HelpCenter";
+import ShippingInfo from "./pages/ShippingInfo";
+import Returns from "./pages/Returns";
+import TrackOrder from "./pages/TrackOrder";
 import VendorLayout from "./components/layout/VendorLayout";
 import VendorDashboard from "./pages/vendor/Dashboard";
 import VendorOrders from "./pages/vendor/Orders";
@@ -73,6 +83,16 @@ const App = () => (
           <Route path="/vendor/login" element={<VendorAuth />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/cookies" element={<CookiePolicy />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
+           <Route path="/careers" element={<Careers />} />
+          <Route path="/help" element={<HelpCenter />} />
+          <Route path="/shipping" element={<ShippingInfo />} />
+          <Route path="/returns" element={<Returns />} />
+          <Route path="/track-order" element={<TrackOrder />} />
             <Route path="/become-vendor" element={<BecomeVendor />} />
             <Route path="/vendor-status" element={<VendorStatus />} />
             <Route path="/checkout" element={
