@@ -1,4 +1,4 @@
-import { ShoppingCart, Search, User, Menu, Heart, LogOut } from "lucide-react";
+import { ShoppingCart, Search, User, Menu, Heart, LogOut, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { NavLink } from "@/components/NavLink";
@@ -50,7 +50,17 @@ const Navbar = () => {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-4">
+            {/* Sell on SyriaMall - only show for non-vendors */}
+            {role !== 'vendor' && (
+              <NavLink to="/become-vendor">
+                <Button variant="ghost" size="sm" className="hidden md:flex items-center gap-2 text-primary hover:text-primary hover:bg-primary/10">
+                  <Store className="h-4 w-4" />
+                  <span className="font-medium">Sell on SyriaMall</span>
+                </Button>
+              </NavLink>
+            )}
+
             <NavLink to="/wishlist">
               <Button variant="ghost" size="icon" className="hidden md:flex">
                 <Heart className="h-5 w-5" />
