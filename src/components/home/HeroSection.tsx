@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
-import heroBanner from "@/assets/hero-banner.jpg";
+import heroBanner from "@/assets/hero-banner.png";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ const HeroSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent flex items-center">
                 <div className="container mx-auto px-8 md:px-12 lg:px-16">
-                  <div className="max-w-2xl space-y-6 text-white">
+                  {/* <div className="max-w-2xl space-y-6 text-white">
                     <h1 className="font-heading font-bold text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight">
                       {banner.title}
                     </h1>
@@ -117,7 +117,7 @@ const HeroSection = () => {
                         Shop Now
                       </Button>
                     )}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
