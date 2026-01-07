@@ -82,7 +82,7 @@ const FeaturedProducts = () => {
             {newArrivals.length === 0 ? (
               <p className="text-center text-muted-foreground py-20 text-lg">No products available</p>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                 {newArrivals.map((product) => (
                   <ProductCard
                     key={product.id}
