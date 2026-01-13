@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "search": "What are you looking for?",
+    "sellOnSyriaMall": "Sell on SyriaMall",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "myAccount": "My Account",
+    "myOrders": "My Orders",
+    "vendorDashboard": "Vendor Dashboard",
+    "adminPanel": "Admin Panel",
+    "signOut": "Sign Out",
+    "electronics": "Electronics",
+    "fashion": "Fashion",
+    "homeLiving": "Home & Living",
+    "beauty": "Beauty",
+    "sports": "Sports",
+    "toysGames": "Toys & Games"
+  },
+  "home": {
+    "shopByCategory": "Shop by Category",
+    "categorySubtitle": "Discover premium products across our curated categories",
+    "explore": "Explore",
+    "featuredProducts": "Featured Products",
+    "featuredSubtitle": "Discover our latest and trending items",
+    "newArrivals": "New Arrivals",
+    "trending": "Trending",
+    "noProducts": "No products available",
+    "noTrending": "No trending products yet"
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "reviews": "reviews"
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "careers": "Careers",
+    "contact": "Contact",
+    "helpCenter": "Help Center",
+    "shippingInfo": "Shipping Info",
+    "returns": "Returns",
+    "trackOrder": "Track Order",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "sellOnSyriaMall": "Sell on SyriaMall",
+    "vendorLogin": "Vendor Login",
+    "allRightsReserved": "All rights reserved"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "new": "New"
+  }
+}

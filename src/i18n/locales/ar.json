@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "search": "ما الذي تبحث عنه؟",
+    "sellOnSyriaMall": "بيع على سيريا مول",
+    "signIn": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "myAccount": "حسابي",
+    "myOrders": "طلباتي",
+    "vendorDashboard": "لوحة البائع",
+    "adminPanel": "لوحة الإدارة",
+    "signOut": "تسجيل الخروج",
+    "electronics": "إلكترونيات",
+    "fashion": "أزياء",
+    "homeLiving": "المنزل والمعيشة",
+    "beauty": "الجمال",
+    "sports": "رياضة",
+    "toysGames": "ألعاب"
+  },
+  "home": {
+    "shopByCategory": "تسوق حسب الفئة",
+    "categorySubtitle": "اكتشف منتجات مميزة عبر فئاتنا المختارة",
+    "explore": "استكشف",
+    "featuredProducts": "منتجات مميزة",
+    "featuredSubtitle": "اكتشف أحدث المنتجات والأكثر رواجاً",
+    "newArrivals": "وصل حديثاً",
+    "trending": "الأكثر رواجاً",
+    "noProducts": "لا توجد منتجات متاحة",
+    "noTrending": "لا توجد منتجات رائجة بعد"
+  },
+  "product": {
+    "addToCart": "أضف إلى السلة",
+    "inStock": "متوفر",
+    "outOfStock": "غير متوفر",
+    "reviews": "تقييمات"
+  },
+  "footer": {
+    "aboutUs": "من نحن",
+    "careers": "وظائف",
+    "contact": "اتصل بنا",
+    "helpCenter": "مركز المساعدة",
+    "shippingInfo": "معلومات الشحن",
+    "returns": "الإرجاع",
+    "trackOrder": "تتبع الطلب",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfService": "شروط الخدمة",
+    "cookiePolicy": "سياسة ملفات تعريف الارتباط",
+    "sellOnSyriaMall": "بيع على سيريا مول",
+    "vendorLogin": "دخول البائع",
+    "allRightsReserved": "جميع الحقوق محفوظة"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "new": "جديد"
+  }
+}
