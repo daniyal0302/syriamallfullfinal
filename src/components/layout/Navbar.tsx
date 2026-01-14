@@ -178,6 +178,7 @@
 
 
 
+
 import { ShoppingCart, Search, User, Menu, Heart, LogOut, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -211,8 +212,7 @@ const Navbar = () => {
           {/* Logo */}
           <NavLink to="/" className="flex items-center space-x-2">
             <img src={logo} alt="SyriaMall" className="h-10 w-auto" />
-            <div className="text-2xl font-heading font-bold">
-              
+             <div className="text-2xl font-heading font-bold">
               <span className="text-foreground">Syria</span>
               <span className="text-primary">Mall</span>
             </div>
@@ -324,37 +324,37 @@ const Navbar = () => {
             to="/category/electronics"
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            {t('nav.electronics')}
+            {t('categories.electronics')}
           </NavLink>
           <NavLink
             to="/category/fashion"
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            {t('nav.fashion')}
+            {t('categories.fashion')}
           </NavLink>
           <NavLink
             to="/category/home-living"
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            {t('nav.homeLiving')}
+            {t('categories.homeLiving')}
           </NavLink>
           <NavLink
             to="/category/beauty"
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            {t('nav.beauty')}
+            {t('categories.beauty')}
           </NavLink>
           <NavLink
             to="/category/sports"
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            {t('nav.sports')}
+            {t('categories.sports')}
           </NavLink>
           <NavLink
             to="/category/toys-games"
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            {t('nav.toysGames')}
+            {t('categories.toysGames')}
           </NavLink>
         </div>
       </div>
