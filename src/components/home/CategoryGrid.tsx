@@ -1,4 +1,4 @@
-mport { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Smartphone, Shirt, Home, Sparkles, Dumbbell, LucideIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
