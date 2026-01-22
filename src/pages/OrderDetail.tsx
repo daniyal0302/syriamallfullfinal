@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useCart } from "@/hooks/useCart";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -8,8 +9,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Loader2, ArrowLeft, Package, MapPin, CreditCard } from "lucide-react";
+import { Loader2, ArrowLeft, Package, MapPin, CreditCard, CheckCircle, PartyPopper } from "lucide-react";
 import OrderTimeline from "@/components/orders/OrderTimeline";
+import { toast } from "sonner";
 
 interface OrderItem {
   id: string;
@@ -34,12 +36,58 @@ interface Order {
 
 const OrderDetail = () => {
   const { id } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { user, loading: authLoading } = useAuth();
+  const { clearCart } = useCart();
   const navigate = useNavigate();
   const [order, setOrder] = useState<Order | null>(null);
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
+  const [verifyingPayment, setVerifyingPayment] = useState(false);
 
+  const paymentSuccess = searchParams.get("payment") === "success";
+
+  // Verify payment and show success animation
+  useEffect(() => {
+    if (paymentSuccess && id && user) {
+      verifyPaymentAndUpdate();
+    }
+  }, [paymentSuccess, id, user]);
+
+  const verifyPaymentAndUpdate = async () => {
+    setVerifyingPayment(true);
+    try {
+      // Call verify-payment edge function
+      const { data, error } = await supabase.functions.invoke("verify-payment", {
+        body: { orderId: id },
+      });
+
+      if (error) {
+        console.error("Error verifying payment:", error);
+      } else if (data?.verified) {
+        // Clear cart on successful payment
+        await clearCart();
+        setShowSuccessAnimation(true);
+        toast.success("Payment successful! Your order is being processed.");
+        
+        // Remove the query param after processing
+        setSearchParams({});
+        
+        // Refresh order details
+        fetchOrderDetails();
+        
+        // Hide animation after 5 seconds
+        setTimeout(() => {
+          setShowSuccessAnimation(false);
+        }, 5000);
+      }
+    } catch (err) {
+      console.error("Payment verification error:", err);
+    } finally {
+      setVerifyingPayment(false);
+    }
+  };
 
   useEffect(() => {
     if (user && id) {
@@ -87,10 +135,13 @@ const OrderDetail = () => {
     return colors[status] || "bg-gray-500";
   };
 
-  if (authLoading || loading) {
+  if (authLoading || loading || verifyingPayment) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        {verifyingPayment && (
+          <p className="text-muted-foreground">Verifying your payment...</p>
+        )}
       </div>
     );
   }
@@ -105,6 +156,25 @@ const OrderDetail = () => {
       
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
+          {/* Success Animation */}
+          {showSuccessAnimation && (
+            <div className="mb-8 p-6 bg-primary/10 border border-primary/30 rounded-xl animate-in fade-in slide-in-from-top-4 duration-500">
+              <div className="flex items-center gap-4">
+                <div className="h-16 w-16 rounded-full bg-primary flex items-center justify-center animate-bounce">
+                  <CheckCircle className="h-10 w-10 text-primary-foreground" />
+                </div>
+                <div className="flex-1">
+                  <h2 className="text-2xl font-bold text-primary flex items-center gap-2">
+                    Payment Successful! <PartyPopper className="h-6 w-6" />
+                  </h2>
+                  <p className="text-muted-foreground">
+                    Thank you for your order. We're preparing it now!
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           <Button variant="ghost" onClick={() => navigate("/orders")} className="mb-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Orders
