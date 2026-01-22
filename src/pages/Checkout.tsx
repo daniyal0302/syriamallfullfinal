@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
@@ -131,8 +132,8 @@ const Checkout = () => {
           subtotal,
           shipping_cost: shippingCost,
           total,
-          payment_method: paymentMethod,
-          payment_status: paymentMethod === "stripe" ? "awaiting_payment" : "pending",
+        payment_method: paymentMethod,
+        payment_status: "pending",
           status: "pending",
           shipping_address: {
             full_name: address.full_name,
