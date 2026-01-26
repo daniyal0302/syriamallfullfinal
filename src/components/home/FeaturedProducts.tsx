@@ -84,7 +84,7 @@ const FeaturedProducts = () => {
             {newArrivals.length === 0 ? (
               <p className="text-center text-muted-foreground py-20 text-lg">{t('home.noProducts')}</p>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
                 {newArrivals.map((product) => {
                   // If sale_price exists and is lower than price, use sale_price as display price
                   const displayPrice = product.sale_price && product.sale_price < product.price 
@@ -117,7 +117,7 @@ const FeaturedProducts = () => {
             {trending.length === 0 ? (
               <p className="text-center text-muted-foreground py-20 text-lg">{t('home.noTrending')}</p>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
                 {trending.map((product) => {
                   // If sale_price exists and is lower than price, use sale_price as display price
                   const displayPrice = product.sale_price && product.sale_price < product.price 
