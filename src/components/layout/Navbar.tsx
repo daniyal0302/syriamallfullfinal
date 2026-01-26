@@ -187,7 +187,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/syriaemallpng logo-01.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -212,10 +212,10 @@ const Navbar = () => {
           {/* Logo */}
           <NavLink to="/" className="flex items-center space-x-2">
             <img src={logo} alt="SyriaMall" className="h-10 w-auto" />
-             <div className="text-2xl font-heading font-bold">
+             {/* <div className="text-2xl font-heading font-bold">
               <span className="text-foreground">Syria</span>
               <span className="text-primary">Mall</span>
-            </div>
+            </div> */}
           </NavLink>
 
           {/* Search Bar */}
