@@ -140,7 +140,7 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useAuth } from "@/hooks/useAuth";
 import { useTranslation } from "react-i18next";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/SyriaEMall Logo white Final-01.png";
 
 const Footer = () => {
   const { user, role } = useAuth();
@@ -154,10 +154,10 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img src={logo} alt="SyriaMall" className="h-10 w-auto" />
-              <h3 className="font-heading font-bold text-lg">
+              {/* <h3 className="font-heading font-bold text-lg">
                 <span className="text-secondary-foreground">Syria</span>
                 <span className="text-primary">Mall</span>
-              </h3>
+              </h3> */}
             </div>
             <p className="text-sm text-muted-foreground mb-4">
               {t('footer.description')}
