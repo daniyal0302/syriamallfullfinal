@@ -212,10 +212,10 @@ const Navbar = () => {
           {/* Logo */}
           <NavLink to="/" className="flex items-center space-x-2">
             <img src={logo} alt="SyriaMall" className="h-10 w-auto" />
-             {/* <div className="text-2xl font-heading font-bold">
+             <div className="text-2xl font-heading font-bold">
               <span className="text-foreground">Syria</span>
               <span className="text-primary">Mall</span>
-            </div> */}
+            </div> 
           </NavLink>
 
           {/* Search Bar */}
