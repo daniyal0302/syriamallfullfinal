@@ -242,7 +242,8 @@ const Navbar = () => {
               <NavLink to="/become-vendor">
                 <Button variant="ghost" size="sm" className="hidden md:flex items-center gap-2 text-primary hover:text-primary hover:bg-primary/10">
                   <Store className="h-4 w-4" />
-                  <span className="font-medium">{t('nav.sellOnSyriaMall')}</span>
+                  {/* <span className="font-medium">{t('nav.sellOnSyriaMall')}</span> */}
+                  <span className="font-medium">Vendor Enrollment</span>
                 </Button>
               </NavLink>
             )}
