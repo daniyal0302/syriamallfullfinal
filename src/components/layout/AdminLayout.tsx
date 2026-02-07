@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useAuth } from "@/hooks/useAuth";
+import logo from "@/assets/syriaemallpng logo-01.png";
 
 const AdminLayout = () => {
   const { signOut } = useAuth();
@@ -44,9 +45,10 @@ const AdminLayout = () => {
       {/* Sidebar */}
       <aside className="w-64 bg-card border-r border-border">
         <div className="p-6 border-b border-border">
+           <img src={logo} alt="SyriaMall" className="h-10 w-auto" />
           <h1 className="text-2xl font-heading font-bold">
             <span className="text-foreground">Syria</span>
-            <span className="text-primary">Mall</span>
+            <span className="text-primary">EMall</span>
           </h1>
           <p className="text-sm text-muted-foreground mt-1">Admin Panel</p>
         </div>
