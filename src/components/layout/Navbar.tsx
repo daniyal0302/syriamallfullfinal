@@ -214,7 +214,7 @@ const Navbar = () => {
             <img src={logo} alt="SyriaMall" className="h-10 w-auto" />
              <div className="text-2xl font-heading font-bold">
               <span className="text-foreground">Syria</span>
-              <span className="text-primary">Mall</span>
+              <span className="text-primary">EMall</span>
             </div> 
           </NavLink>
 
