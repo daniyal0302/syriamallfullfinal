@@ -170,7 +170,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 
 // Desktop & Mobile fallback images
-import heroBanner from "@/assets/Everything You Love.jpg";
+import heroBanner from "@/assets/Everything You Love.jpeg";
 import heroBannerMobile from "@/assets/hero-banner-mobile.jpg";
 
 const HeroSection = () => {
