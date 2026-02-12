@@ -193,12 +193,14 @@ const ProductCard = ({
             </div>
           )}
           {discount > 0 && (
+      <>
             <div className="absolute top-3 right-14 z-10 bg-destructive text-destructive-foreground text-xs font-bold px-3 py-1.5 rounded-md shadow-md">
               -{discount}%
             </div>
       <div className="absolute bottom-3 right-3 z-10 bg-destructive text-destructive-foreground text-xs font-bold px-3 py-1.5 rounded-md shadow-md">
                 -{discount}%
               </div>
+        </>
           )}
           <Button
             size="icon"
