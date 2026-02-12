@@ -170,8 +170,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 
 // Desktop & Mobile fallback images
-import heroBanner from "@/assets/Everything You Love.jpeg";
-import heroBannerMobile from "@/assets/hero-banner-mobile.jpg";
+import heroBanner from "@/assets/hero banner for desktop.jpeg";
+import heroBannerMobile from "@/assets/hero banner for mobile.jpeg";
 
 const HeroSection = () => {
   const navigate = useNavigate();
