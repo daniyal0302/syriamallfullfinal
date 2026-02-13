@@ -274,7 +274,7 @@ const HeroSection = () => {
               </picture>
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent flex items-center">
+              <div className="absolute inset-0  to-transparent flex items-center">
                 {/* <div className="px-6 md:px-12 lg:px-16 max-w-2xl text-white space-y-4">
                   <h1 className="font-heading font-bold text-3xl md:text-5xl lg:text-6xl leading-tight">
                     {banner.title}
