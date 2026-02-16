@@ -1,9 +1,13 @@
+
 // import { Facebook, Instagram, Twitter } from "lucide-react";
 // import { NavLink } from "@/components/NavLink";
 // import { useAuth } from "@/hooks/useAuth";
+// import { useTranslation } from "react-i18next";
+// import logo from "@/assets/SyriaEMall Logo white Final-01.png";
 
 // const Footer = () => {
 //   const { user, role } = useAuth();
+//   const { t } = useTranslation();
 
 //   return (
 //     <footer className="bg-secondary text-secondary-foreground mt-16">
@@ -11,14 +15,17 @@
 //         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 //           {/* About */}
 //           <div>
-//             <h3 className="font-heading font-bold text-lg mb-4">
-//               <span className="text-secondary-foreground">Syria</span>
-//               <span className="text-primary">Mall</span>
-//             </h3>
+//             <div className="flex items-center gap-2 mb-4">
+//               <img src={logo} alt="SyriaMall" className="h-10 w-auto" />
+//               {/* <h3 className="font-heading font-bold text-lg">
+//                 <span className="text-secondary-foreground">Syria</span>
+//                 <span className="text-primary">Mall</span>
+//               </h3> */}
+//             </div>
 //             <p className="text-sm text-muted-foreground mb-4">
-//               Your trusted digital marketplace for all your shopping needs. Quality products from verified vendors.
+//               {t('footer.description')}
 //             </p>
-//             <div className="flex space-x-4">
+//             <div className="flex space-x-4 rtl:space-x-reverse">
 //               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
 //                 <Facebook className="h-5 w-5" />
 //               </a>
@@ -33,42 +40,42 @@
 
 //           {/* Quick Links */}
 //           <div>
-//             <h4 className="font-semibold mb-4">Quick Links</h4>
+//             <h4 className="font-semibold mb-4">{t('footer.quickLinks')}</h4>
 //             <ul className="space-y-2 text-sm">
 //               <li>
 //                 <NavLink to="/about" className="text-muted-foreground hover:text-primary transition-colors">
-//                   About Us
+//                   {t('footer.aboutUs')}
 //                 </NavLink>
 //               </li>
 //               <li>
 //                 <NavLink to="/contact" className="text-muted-foreground hover:text-primary transition-colors">
-//                   Contact
+//                   {t('footer.contact')}
 //                 </NavLink>
 //               </li>
 //               {/* Show vendor-specific links based on role */}
 //               {role === 'vendor' ? (
 //                 <li>
 //                   <NavLink to="/vendor" className="text-muted-foreground hover:text-primary transition-colors">
-//                     Vendor Dashboard
+//                     {t('footer.vendorDashboard')}
 //                   </NavLink>
 //                 </li>
 //               ) : (
 //                 <>
 //                   <li>
 //                     <NavLink to="/become-vendor" className="text-muted-foreground hover:text-primary transition-colors">
-//                       Become a Vendor
+//                       {t('footer.becomeVendor')}
 //                     </NavLink>
 //                   </li>
 //                   <li>
 //                     <NavLink to="/vendor/login" className="text-muted-foreground hover:text-primary transition-colors">
-//                       Vendor Login
+//                       {t('footer.vendorLogin')}
 //                     </NavLink>
 //                   </li>
 //                 </>
 //               )}
 //               <li>
 //                 <NavLink to="/careers" className="text-muted-foreground hover:text-primary transition-colors">
-//                   Careers
+//                   {t('footer.careers')}
 //                 </NavLink>
 //               </li>
 //             </ul>
@@ -76,26 +83,26 @@
 
 //           {/* Customer Service */}
 //           <div>
-//             <h4 className="font-semibold mb-4">Customer Service</h4>
+//             <h4 className="font-semibold mb-4">{t('footer.customerService')}</h4>
 //             <ul className="space-y-2 text-sm">
 //               <li>
 //                 <NavLink to="/help" className="text-muted-foreground hover:text-primary transition-colors">
-//                   Help Center
+//                   {t('footer.helpCenter')}
 //                 </NavLink>
 //               </li>
 //               <li>
 //                 <NavLink to="/shipping" className="text-muted-foreground hover:text-primary transition-colors">
-//                   Shipping Info
+//                   {t('footer.shippingInfo')}
 //                 </NavLink>
 //               </li>
 //               <li>
 //                 <NavLink to="/returns" className="text-muted-foreground hover:text-primary transition-colors">
-//                   Returns
+//                   {t('footer.returns')}
 //                 </NavLink>
 //               </li>
 //               <li>
-//                 <NavLink to="/track" className="text-muted-foreground hover:text-primary transition-colors">
-//                   Track Order
+//                 <NavLink to="/track-order" className="text-muted-foreground hover:text-primary transition-colors">
+//                   {t('footer.trackOrder')}
 //                 </NavLink>
 //               </li>
 //             </ul>
@@ -103,21 +110,21 @@
 
 //           {/* Legal */}
 //           <div>
-//             <h4 className="font-semibold mb-4">Legal</h4>
+//             <h4 className="font-semibold mb-4">{t('footer.legal')}</h4>
 //             <ul className="space-y-2 text-sm">
 //               <li>
 //                 <NavLink to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
-//                   Privacy Policy
+//                   {t('footer.privacyPolicy')}
 //                 </NavLink>
 //               </li>
 //               <li>
 //                 <NavLink to="/terms" className="text-muted-foreground hover:text-primary transition-colors">
-//                   Terms of Service
+//                   {t('footer.termsOfService')}
 //                 </NavLink>
 //               </li>
 //               <li>
 //                 <NavLink to="/cookies" className="text-muted-foreground hover:text-primary transition-colors">
-//                   Cookie Policy
+//                   {t('footer.cookiePolicy')}
 //                 </NavLink>
 //               </li>
 //             </ul>
@@ -125,7 +132,7 @@
 //         </div>
 
 //         <div className="border-t border-border/20 mt-8 pt-8 text-center text-sm text-muted-foreground">
-//           <p>&copy; {new Date().getFullYear()} SyriaMall. All rights reserved.</p>
+//           <p>&copy; {new Date().getFullYear()} SyriaMall. {t('footer.allRightsReserved')}</p>
 //         </div>
 //       </div>
 //     </footer>
@@ -133,7 +140,6 @@
 // };
 
 // export default Footer;
-
 
 
 import { Facebook, Instagram, Twitter } from "lucide-react";
@@ -159,17 +165,17 @@ const Footer = () => {
                 <span className="text-primary">Mall</span>
               </h3> */}
             </div>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-sm text-white mb-4">
               {t('footer.description')}
             </p>
             <div className="flex space-x-4 rtl:space-x-reverse">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-white hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-white hover:text-primary transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-white hover:text-primary transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
             </div>
@@ -180,38 +186,38 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <NavLink to="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                <NavLink to="/about" className="text-white hover:text-primary transition-colors">
                   {t('footer.aboutUs')}
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                <NavLink to="/contact" className="text-white hover:text-primary transition-colors">
                   {t('footer.contact')}
                 </NavLink>
               </li>
               {/* Show vendor-specific links based on role */}
               {role === 'vendor' ? (
                 <li>
-                  <NavLink to="/vendor" className="text-muted-foreground hover:text-primary transition-colors">
+                  <NavLink to="/vendor" className="text-white hover:text-primary transition-colors">
                     {t('footer.vendorDashboard')}
                   </NavLink>
                 </li>
               ) : (
                 <>
                   <li>
-                    <NavLink to="/become-vendor" className="text-muted-foreground hover:text-primary transition-colors">
+                    <NavLink to="/become-vendor" className="text-white hover:text-primary transition-colors">
                       {t('footer.becomeVendor')}
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/vendor/login" className="text-muted-foreground hover:text-primary transition-colors">
+                    <NavLink to="/vendor/login" className="text-white hover:text-primary transition-colors">
                       {t('footer.vendorLogin')}
                     </NavLink>
                   </li>
                 </>
               )}
               <li>
-                <NavLink to="/careers" className="text-muted-foreground hover:text-primary transition-colors">
+                <NavLink to="/careers" className="text-white hover:text-primary transition-colors">
                   {t('footer.careers')}
                 </NavLink>
               </li>
@@ -223,22 +229,22 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">{t('footer.customerService')}</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <NavLink to="/help" className="text-muted-foreground hover:text-primary transition-colors">
+                <NavLink to="/help" className="text-white hover:text-primary transition-colors">
                   {t('footer.helpCenter')}
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/shipping" className="text-muted-foreground hover:text-primary transition-colors">
+                <NavLink to="/shipping" className="text-white hover:text-primary transition-colors">
                   {t('footer.shippingInfo')}
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/returns" className="text-muted-foreground hover:text-primary transition-colors">
+                <NavLink to="/returns" className="text-white hover:text-primary transition-colors">
                   {t('footer.returns')}
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/track-order" className="text-muted-foreground hover:text-primary transition-colors">
+                <NavLink to="/track-order" className="text-white hover:text-primary transition-colors">
                   {t('footer.trackOrder')}
                 </NavLink>
               </li>
@@ -250,17 +256,17 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">{t('footer.legal')}</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <NavLink to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
+                <NavLink to="/privacy" className="text-white hover:text-primary transition-colors">
                   {t('footer.privacyPolicy')}
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/terms" className="text-muted-foreground hover:text-primary transition-colors">
+                <NavLink to="/terms" className="text-white hover:text-primary transition-colors">
                   {t('footer.termsOfService')}
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/cookies" className="text-muted-foreground hover:text-primary transition-colors">
+                <NavLink to="/cookies" className="text-white hover:text-primary transition-colors">
                   {t('footer.cookiePolicy')}
                 </NavLink>
               </li>
@@ -268,7 +274,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-border/20 mt-8 pt-8 text-center text-sm text-muted-foreground">
+        <div className="border-t border-border/20 mt-8 pt-8 text-center text-sm text-white">
           <p>&copy; {new Date().getFullYear()} SyriaMall. {t('footer.allRightsReserved')}</p>
         </div>
       </div>
