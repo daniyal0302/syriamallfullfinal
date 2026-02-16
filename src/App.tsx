@@ -61,6 +61,8 @@ import AdminBanners from "./pages/admin/Banners";
 import AdminSettings from "./pages/admin/Settings";
 import AdminAnalytics from "./pages/admin/Analytics";
 import AdminInviteCodes from "./pages/admin/InviteCodes";
+import TermsIndex from "./pages/terms/TermsIndex";
+import TermSection from "./pages/terms/TermSection";
 
 const queryClient = new QueryClient();
 
@@ -84,7 +86,8 @@ const App = () => (
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/terms" element={<TermsIndex />} />
+          <Route path="/terms/:slug" element={<TermSection />} />
           <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
