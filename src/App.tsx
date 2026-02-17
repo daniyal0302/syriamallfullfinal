@@ -61,6 +61,7 @@ import AdminBanners from "./pages/admin/Banners";
 import AdminSettings from "./pages/admin/Settings";
 import AdminAnalytics from "./pages/admin/Analytics";
 import AdminInviteCodes from "./pages/admin/InviteCodes";
+import AdminSupportTickets from "./pages/admin/SupportTickets";
 import TermsIndex from "./pages/terms/TermsIndex";
 import TermSection from "./pages/terms/TermSection";
 
@@ -159,6 +160,7 @@ const App = () => (
                 <Route path="users" element={<AdminUsers />} />
                 <Route path="payouts" element={<AdminPayouts />} />
                 <Route path="notifications" element={<AdminNotifications />} />
+              <Route path="support-tickets" element={<AdminSupportTickets />} />
                 <Route path="cms-pages" element={<AdminCMSPages />} />
                 <Route path="banners" element={<AdminBanners />} />
                 <Route path="invite-codes" element={<AdminInviteCodes />} />
