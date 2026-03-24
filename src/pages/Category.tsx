@@ -1,5 +1,7 @@
+
 // import { useState, useEffect } from "react";
 // import { useParams, useNavigate } from "react-router-dom";
+// import { useTranslation } from "react-i18next";
 // import Navbar from "@/components/layout/Navbar";
 // import Footer from "@/components/layout/Footer";
 // import ProductCard from "@/components/products/ProductCard";
@@ -36,6 +38,7 @@
 // const Category = () => {
 //   const { slug } = useParams();
 //   const navigate = useNavigate();
+//   const { t, i18n } = useTranslation();
 //   const [loading, setLoading] = useState(true);
 //   const [category, setCategory] = useState<any>(null);
 //   const [subCategories, setSubCategories] = useState<any[]>([]);
@@ -255,7 +258,7 @@
 //       <main className="flex-1 bg-muted/20">
 //         {/* Category Banner */}
 //         {category && (
-//           <div className="relative h-64 md:h-80 bg-gradient-to-br from-primary/20 via-primary/10 to-background overflow-hidden">
+//           <div className="relative h-44 md:h-44 bg-gradient-to-br from-primary/20 via-primary/10 to-background overflow-hidden">
 //             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMTA2LCAwLCAwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-30" />
 //             <div className="container mx-auto px-4 h-full flex flex-col justify-center relative">
 //               <h1 className="font-heading font-bold text-4xl md:text-6xl mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
@@ -276,12 +279,12 @@
 //             <BreadcrumbList>
 //               <BreadcrumbItem>
 //                 <BreadcrumbLink onClick={() => navigate("/")} className="cursor-pointer">
-//                   Home
+//                   {t('breadcrumb.home')}
 //                 </BreadcrumbLink>
 //               </BreadcrumbItem>
 //               <BreadcrumbSeparator />
 //               <BreadcrumbItem>
-//                 <BreadcrumbPage>{category?.name || "Category"}</BreadcrumbPage>
+//                 <BreadcrumbPage>{category?.name || t('category.categories')}</BreadcrumbPage>
 //               </BreadcrumbItem>
 //             </BreadcrumbList>
 //           </Breadcrumb>
@@ -315,12 +318,12 @@
 //             {/* Filters Sidebar */}
 //             <aside className="lg:w-64 space-y-6">
 //               <div className="bg-card rounded-lg p-6 space-y-6">
-//                 <h3 className="font-semibold text-lg">Filters</h3>
+//                 <h3 className="font-semibold text-lg">{t('category.filters')}</h3>
 
 //                 {/* Sub-Categories */}
 //                 {subCategories.length > 0 && (
 //                   <div className="space-y-3 pb-6 border-b">
-//                     <Label className="text-base font-semibold">Categories</Label>
+//                     <Label className="text-base font-semibold">{t('category.categories')}</Label>
 //                     <div className="space-y-2">
 //                       {subCategories.map((subCategory) => (
 //                         <div key={subCategory.id} className="flex items-center space-x-2">
@@ -344,7 +347,7 @@
 //                 {/* Brands */}
 //                 {brands.length > 0 && (
 //                   <div className="space-y-3 pb-6 border-b">
-//                     <Label className="text-base font-semibold">Brands</Label>
+//                     <Label className="text-base font-semibold">{t('category.brands')}</Label>
 //                     <div className="space-y-2 max-h-48 overflow-y-auto">
 //                       {brands.map((brand) => (
 //                         <div key={brand} className="flex items-center space-x-2">
@@ -367,7 +370,7 @@
 
 //                 {/* Price Range */}
 //                 <div className="space-y-3 pb-6 border-b">
-//                   <Label className="text-base font-semibold">Price Range</Label>
+//                   <Label className="text-base font-semibold">{t('category.priceRange')}</Label>
 //                   <Slider
 //                     value={priceRange}
 //                     onValueChange={setPriceRange}
@@ -384,7 +387,7 @@
 //                 {/* Vendors */}
 //                 {vendors.length > 0 && (
 //                   <div className="space-y-3 pb-6">
-//                     <Label className="text-base font-semibold">Vendors</Label>
+//                     <Label className="text-base font-semibold">{t('category.vendors')}</Label>
 //                     <div className="space-y-2 max-h-48 overflow-y-auto">
 //                       {vendors.map((vendor) => (
 //                         <div key={vendor.id} className="flex items-center space-x-2">
@@ -415,7 +418,7 @@
 //                     setPriceRange([0, 1000]);
 //                   }}
 //                 >
-//                   Clear All Filters
+//                   {t('category.clearAllFilters')}
 //                 </Button>
 //               </div>
 //             </aside>
@@ -427,14 +430,15 @@
 //                 <div className="mb-12 bg-card rounded-lg p-6 border border-border">
 //                   <div className="flex items-center justify-between mb-4">
 //                     <h2 className="font-heading font-bold text-2xl">
-//                       Featured Products
+//                       {t('category.featuredProducts')}
 //                     </h2>
 //                     <span className="text-sm text-muted-foreground">
-//                       Top picks in {category?.name}
+//                       {t('category.topPicks')} {category?.name}
 //                     </span>
 //                   </div>
-//                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-//                     {filteredProducts.slice(0, 4).map((product) => (
+//                   {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-4"> */}
+//                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+//                     {filteredProducts.slice(0, 5).map((product) => (
 //                       <ProductCard
 //                         key={product.id}
 //                         id={product.id}
@@ -453,20 +457,20 @@
 
 //               <div className="flex justify-between items-center mb-6">
 //                 <p className="text-muted-foreground">
-//                   Showing {paginatedProducts.length} of {filteredProducts.length} products
-//                   {filteredProducts.length !== products.length && ` (${products.length} total)`}
+//                   {t('category.showing')} {paginatedProducts.length} {t('category.of')} {filteredProducts.length} {t('category.products')}
+//                   {filteredProducts.length !== products.length && ` (${products.length} ${t('category.total')})`}
 //                 </p>
 //                 <Select value={sortBy} onValueChange={setSortBy}>
 //                   <SelectTrigger className="w-48">
 //                     <SelectValue />
 //                   </SelectTrigger>
 //                   <SelectContent>
-//                     <SelectItem value="newest">Newest Arrivals</SelectItem>
-//                     <SelectItem value="best-sellers">Best Sellers</SelectItem>
-//                     <SelectItem value="popularity">Most Popular</SelectItem>
-//                     <SelectItem value="rating">Highest Rated</SelectItem>
-//                     <SelectItem value="price-low">Price: Low to High</SelectItem>
-//                     <SelectItem value="price-high">Price: High to Low</SelectItem>
+//                     <SelectItem value="newest">{t('category.newestArrivals')}</SelectItem>
+//                     <SelectItem value="best-sellers">{t('category.bestSellers')}</SelectItem>
+//                     <SelectItem value="popularity">{t('category.mostPopular')}</SelectItem>
+//                     <SelectItem value="rating">{t('category.topRated')}</SelectItem>
+//                     <SelectItem value="price-low">{t('category.priceLowToHigh')}</SelectItem>
+//                     <SelectItem value="price-high">{t('category.priceHighToLow')}</SelectItem>
 //                   </SelectContent>
 //                 </Select>
 //               </div>
@@ -474,7 +478,10 @@
 //               {filteredProducts.length === 0 ? (
 //                 <div className="text-center py-12">
 //                   <p className="text-muted-foreground text-lg">
-//                     No products found matching your filters
+//                     {t('category.noProductsFound')}
+//                   </p>
+//                   <p className="text-muted-foreground text-sm mt-2">
+//                     {t('category.adjustFilters')}
 //                   </p>
 //                   <Button
 //                     variant="outline"
@@ -486,12 +493,13 @@
 //                       setPriceRange([0, 1000]);
 //                     }}
 //                   >
-//                     Clear All Filters
+//                     {t('category.clearAllFilters')}
 //                   </Button>
 //                 </div>
 //               ) : (
 //                 <>
-//                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+//                   {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"> */}
+//                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
 //                     {paginatedProducts.map((product) => (
 //                       <ProductCard
 //                         key={product.id}
@@ -565,9 +573,11 @@
 
 
 
-import { useState, useEffect } from "react";
+
+import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useAutoTranslate, useAutoTranslateBatch } from "@/hooks/useAutoTranslate";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ProductCard from "@/components/products/ProductCard";
@@ -810,6 +820,17 @@ const Category = () => {
     );
   };
 
+  // Auto-translate category name and description
+  const translatedCategoryName = useAutoTranslate(category?.name || "", null);
+  const translatedCategoryDesc = useAutoTranslate(category?.description || "", null);
+
+  // Auto-translate subcategory names
+  const subCategoryItems = useMemo(
+    () => subCategories.map((sc) => ({ text: sc.name, existingTranslation: null })),
+    [subCategories]
+  );
+  const translatedSubCategoryNames = useAutoTranslateBatch(subCategoryItems);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -824,15 +845,15 @@ const Category = () => {
       <main className="flex-1 bg-muted/20">
         {/* Category Banner */}
         {category && (
-          <div className="relative h-44 md:h-44 bg-gradient-to-br from-primary/20 via-primary/10 to-background overflow-hidden">
+          <div className="relative h-64 md:h-80 bg-gradient-to-br from-primary/20 via-primary/10 to-background overflow-hidden">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMTA2LCAwLCAwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-30" />
             <div className="container mx-auto px-4 h-full flex flex-col justify-center relative">
               <h1 className="font-heading font-bold text-4xl md:text-6xl mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                {category.name}
+                {translatedCategoryName}
               </h1>
               {category.description && (
                 <p className="text-muted-foreground text-lg md:text-xl max-w-2xl">
-                  {category.description}
+                  {translatedCategoryDesc}
                 </p>
               )}
             </div>
@@ -850,7 +871,7 @@ const Category = () => {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>{category?.name || t('category.categories')}</BreadcrumbPage>
+                <BreadcrumbPage>{translatedCategoryName || t('category.categories')}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -891,7 +912,7 @@ const Category = () => {
                   <div className="space-y-3 pb-6 border-b">
                     <Label className="text-base font-semibold">{t('category.categories')}</Label>
                     <div className="space-y-2">
-                      {subCategories.map((subCategory) => (
+                      {subCategories.map((subCategory, idx) => (
                         <div key={subCategory.id} className="flex items-center space-x-2">
                           <Checkbox
                             id={subCategory.id}
@@ -902,7 +923,7 @@ const Category = () => {
                             htmlFor={subCategory.id}
                             className="text-sm cursor-pointer hover:text-primary"
                           >
-                            {subCategory.name}
+                            {translatedSubCategoryNames[idx] || subCategory.name}
                           </label>
                         </div>
                       ))}
@@ -999,16 +1020,16 @@ const Category = () => {
                       {t('category.featuredProducts')}
                     </h2>
                     <span className="text-sm text-muted-foreground">
-                      {t('category.topPicks')} {category?.name}
+                      {t('category.topPicks')} {translatedCategoryName}
                     </span>
                   </div>
-                  {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-4"> */}
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                     {filteredProducts.slice(0, 5).map((product) => (
                       <ProductCard
                         key={product.id}
                         id={product.id}
                         name={product.name}
+                        nameAr={product.name_ar}
                         price={product.price}
                         originalPrice={product.sale_price}
                         rating={product.rating_average || 0}
@@ -1064,13 +1085,13 @@ const Category = () => {
                 </div>
               ) : (
                 <>
-                  {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"> */}
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
                     {paginatedProducts.map((product) => (
                       <ProductCard
                         key={product.id}
                         id={product.id}
                         name={product.name}
+                        nameAr={product.name_ar}
                         price={product.price}
                         originalPrice={product.sale_price}
                         rating={product.rating_average || 0}
