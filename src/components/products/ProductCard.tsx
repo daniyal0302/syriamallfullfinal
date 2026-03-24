@@ -1,3 +1,4 @@
+
 // import { Card } from "@/components/ui/card";
 // import { Button } from "@/components/ui/button";
 // import { Heart, ShoppingCart, Star } from "lucide-react";
@@ -5,6 +6,7 @@
 // import { useCart } from "@/hooks/useCart";
 // import { useWishlist } from "@/hooks/useWishlist";
 // import { cn } from "@/lib/utils";
+// import { useTranslation } from "react-i18next";
 
 // interface ProductCardProps {
 //   id: string;
@@ -31,6 +33,7 @@
 // }: ProductCardProps) => {
 //   const { addToCart } = useCart();
 //   const { isInWishlist, toggleWishlist } = useWishlist();
+//   const { t } = useTranslation();
 //   const inWishlist = isInWishlist(id);
   
 //   const discount = originalPrice
@@ -57,9 +60,14 @@
 //             </div>
 //           )}
 //           {discount > 0 && (
+//       <>
 //             <div className="absolute top-3 right-14 z-10 bg-destructive text-destructive-foreground text-xs font-bold px-3 py-1.5 rounded-md shadow-md">
 //               -{discount}%
 //             </div>
+//       <div className="absolute bottom-3 right-3 z-10 bg-destructive text-destructive-foreground text-xs font-bold px-3 py-1.5 rounded-md shadow-md">
+//                 -{discount}%
+//               </div>
+//         </>
 //           )}
 //           <Button
 //             size="icon"
@@ -120,8 +128,8 @@
 //           size="default"
 //           onClick={handleAddToCart}
 //         >
-//           <ShoppingCart className="h-4 w-4 mr-2" />
-//           Add to Cart
+//           <ShoppingCart className="h-4 w-4 ltr:mr-2 rtl:ml-2" />
+//           {t('product.addToCart')}
 //         </Button>
 //       </div>
 //     </Card>
@@ -129,8 +137,6 @@
 // };
 
 // export default ProductCard;
-
-
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -140,10 +146,12 @@ import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
+import { useAutoTranslate } from "@/hooks/useAutoTranslate";
 
 interface ProductCardProps {
   id: string;
   name: string;
+  nameAr?: string;
   price: number;
   originalPrice?: number;
   rating: number;
@@ -156,6 +164,7 @@ interface ProductCardProps {
 const ProductCard = ({
   id,
   name,
+  nameAr,
   price,
   originalPrice,
   rating,
@@ -168,6 +177,7 @@ const ProductCard = ({
   const { isInWishlist, toggleWishlist } = useWishlist();
   const { t } = useTranslation();
   const inWishlist = isInWishlist(id);
+  const displayName = useAutoTranslate(name, nameAr);
   
   const discount = originalPrice
     ? Math.round(((originalPrice - price) / originalPrice) * 100)
@@ -193,14 +203,14 @@ const ProductCard = ({
             </div>
           )}
           {discount > 0 && (
-      <>
-            <div className="absolute top-3 right-14 z-10 bg-destructive text-destructive-foreground text-xs font-bold px-3 py-1.5 rounded-md shadow-md">
-              -{discount}%
-            </div>
-      <div className="absolute bottom-3 right-3 z-10 bg-destructive text-destructive-foreground text-xs font-bold px-3 py-1.5 rounded-md shadow-md">
+            <>
+              <div className="absolute top-3 right-14 z-10 bg-destructive text-destructive-foreground text-xs font-bold px-3 py-1.5 rounded-md shadow-md">
                 -{discount}%
               </div>
-        </>
+              <div className="absolute bottom-3 right-3 z-10 bg-destructive text-destructive-foreground text-xs font-bold px-3 py-1.5 rounded-md shadow-md">
+                -{discount}%
+              </div>
+            </>
           )}
           <Button
             size="icon"
@@ -216,7 +226,7 @@ const ProductCard = ({
           {image ? (
             <img
               src={image}
-              alt={name}
+              alt={displayName}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
           ) : (
@@ -233,7 +243,7 @@ const ProductCard = ({
         </div>
         <NavLink to={`/product/${id}`}>
           <h3 className="font-semibold text-base line-clamp-2 min-h-[3rem] hover:text-primary transition-colors leading-snug">
-            {name}
+            {displayName}
           </h3>
         </NavLink>
 
@@ -245,13 +255,18 @@ const ProductCard = ({
           <span className="text-xs text-muted-foreground">({reviews})</span>
         </div>
 
-        <div className="flex items-center gap-2 pt-1">
+        <div className="flex items-center gap-2 pt-1 flex-wrap">
           <span className="font-heading font-bold text-xl text-primary">
-            ${price.toFixed(2)}
+            {t('common.currency', { amount: price.toFixed(2) })}
           </span>
           {originalPrice && (
             <span className="text-sm text-muted-foreground line-through">
-              ${originalPrice.toFixed(2)}
+              {t('common.currency', { amount: originalPrice.toFixed(2) })}
+            </span>
+          )}
+          {discount > 0 && (
+            <span className="text-xs font-bold text-destructive bg-destructive/10 px-2 py-0.5 rounded">
+              -{discount}%
             </span>
           )}
         </div>
