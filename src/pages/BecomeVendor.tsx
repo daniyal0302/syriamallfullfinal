@@ -1,3 +1,4 @@
+
 // import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 // import { useAuth } from "@/hooks/useAuth";
@@ -623,6 +624,7 @@
 
 // export default BecomeVendor;
 
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
@@ -640,6 +642,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { z } from "zod";
 import { DocumentUpload } from "@/components/vendor/DocumentUpload";
+import { useTranslation } from "react-i18next";
 
 const vendorApplicationSchema = z.object({
   email: z.string().email("Invalid email address").max(255, "Email too long"),
@@ -665,6 +668,7 @@ const vendorApplicationSchema = z.object({
 });
 
 const BecomeVendor = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { user, role, signUp, refreshRole } = useAuth();
   const [loading, setLoading] = useState(false);
@@ -869,9 +873,9 @@ const BecomeVendor = () => {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <Store className="w-16 h-16 mx-auto mb-4 text-primary" />
-          <h1 className="text-4xl font-bold mb-4">Become a Vendor</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('becomeVendor.title')}</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Join SyriaMall and reach thousands of customers. Sell your products on one of the fastest-growing marketplaces.
+            {t('becomeVendor.subtitle')}
           </p>
         </div>
 
@@ -879,26 +883,26 @@ const BecomeVendor = () => {
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           <Card>
             <CardHeader>
-              <CardTitle>Wide Reach</CardTitle>
+              <CardTitle>{t('becomeVendor.wideReach')}</CardTitle>
             </CardHeader>
             <CardContent>
-              Connect with customers across Syria and beyond.
+              {t('becomeVendor.wideReachDesc')}
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Easy Management</CardTitle>
+              <CardTitle>{t('becomeVendor.easyManagement')}</CardTitle>
             </CardHeader>
             <CardContent>
-              Powerful dashboard to manage your products and orders.
+              {t('becomeVendor.easyManagementDesc')}
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Secure Payments</CardTitle>
+              <CardTitle>{t('becomeVendor.securePayments')}</CardTitle>
             </CardHeader>
             <CardContent>
-              Get paid securely with multiple payment options.
+              {t('becomeVendor.securePaymentsDesc')}
             </CardContent>
           </Card>
         </div>
@@ -906,17 +910,17 @@ const BecomeVendor = () => {
         {/* Application Form */}
         <Card className="max-w-4xl mx-auto">
           <CardHeader>
-            <CardTitle>Vendor Application Form</CardTitle>
-            <CardDescription>Fill out the form below to apply as a vendor</CardDescription>
+            <CardTitle>{t('becomeVendor.applicationForm')}</CardTitle>
+            <CardDescription>{t('becomeVendor.applicationFormDesc')}</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Account Information */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Account Information</h3>
+                <h3 className="text-lg font-semibold">{t('becomeVendor.accountInfo')}</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="email">Email Address *</Label>
+                    <Label htmlFor="email">{t('becomeVendor.emailAddress')}</Label>
                     <Input
                       id="email"
                       type="email"
@@ -926,11 +930,11 @@ const BecomeVendor = () => {
                       disabled={!!user}
                       className={user ? "bg-muted" : ""}
                     />
-                    {user && <p className="text-xs text-muted-foreground mt-1">Using your account email</p>}
+                    {user && <p className="text-xs text-muted-foreground mt-1">{t('becomeVendor.usingAccountEmail')}</p>}
                     {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
                   </div>
                   <div>
-                    <Label htmlFor="fullName">Full Name *</Label>
+                    <Label htmlFor="fullName">{t('auth.fullName')} *</Label>
                     <Input
                       id="fullName"
                       value={formData.fullName}
@@ -943,7 +947,7 @@ const BecomeVendor = () => {
                 {!user && (
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="password">Password *</Label>
+                      <Label htmlFor="password">{t('auth.password')} *</Label>
                       <Input
                         id="password"
                         type="password"
@@ -954,7 +958,7 @@ const BecomeVendor = () => {
                       {errors.password && <p className="text-sm text-destructive mt-1">{errors.password}</p>}
                     </div>
                     <div>
-                      <Label htmlFor="confirmPassword">Confirm Password *</Label>
+                      <Label htmlFor="confirmPassword">{t('auth.confirmPassword')} *</Label>
                       <Input
                         id="confirmPassword"
                         type="password"
@@ -967,7 +971,7 @@ const BecomeVendor = () => {
                   </div>
                 )}
                 <div>
-                  <Label htmlFor="phone">Phone Number *</Label>
+                  <Label htmlFor="phone">{t('auth.phone')} *</Label>
                   <Input
                     id="phone"
                     type="tel"
@@ -981,10 +985,10 @@ const BecomeVendor = () => {
 
               {/* Store Information */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Store Information</h3>
+                <h3 className="text-lg font-semibold">{t('becomeVendor.storeInfo')}</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="storeName">Store Name *</Label>
+                    <Label htmlFor="storeName">{t('common.storeName')} *</Label>
                     <Input
                       id="storeName"
                       value={formData.storeName}
@@ -994,21 +998,21 @@ const BecomeVendor = () => {
                     {errors.storeName && <p className="text-sm text-destructive mt-1">{errors.storeName}</p>}
                   </div>
                   <div>
-                    <Label htmlFor="businessType">Business Type *</Label>
+                    <Label htmlFor="businessType">{t('becomeVendor.businessType')}</Label>
                     <Select value={formData.businessType} onValueChange={(value) => handleChange("businessType", value)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Individual">Individual</SelectItem>
-                        <SelectItem value="Company">Company</SelectItem>
+                        <SelectItem value="Individual">{t('becomeVendor.individual')}</SelectItem>
+                        <SelectItem value="Company">{t('becomeVendor.company')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="storeLogo">Store Logo URL</Label>
+                    <Label htmlFor="storeLogo">{t('becomeVendor.storeLogoUrl')}</Label>
                     <Input
                       id="storeLogo"
                       type="url"
@@ -1018,7 +1022,7 @@ const BecomeVendor = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="storeBanner">Store Banner URL</Label>
+                    <Label htmlFor="storeBanner">{t('becomeVendor.storeBannerUrl')}</Label>
                     <Input
                       id="storeBanner"
                       type="url"
@@ -1029,7 +1033,7 @@ const BecomeVendor = () => {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="storeAddress">Store Address *</Label>
+                  <Label htmlFor="storeAddress">{t('becomeVendor.storeAddress')}</Label>
                   <Input
                     id="storeAddress"
                     value={formData.storeAddress}
@@ -1040,7 +1044,7 @@ const BecomeVendor = () => {
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="city">City *</Label>
+                    <Label htmlFor="city">{t('becomeVendor.city')}</Label>
                     <Input
                       id="city"
                       value={formData.city}
@@ -1050,7 +1054,7 @@ const BecomeVendor = () => {
                     {errors.city && <p className="text-sm text-destructive mt-1">{errors.city}</p>}
                   </div>
                   <div>
-                    <Label htmlFor="country">Country *</Label>
+                    <Label htmlFor="country">{t('becomeVendor.country')}</Label>
                     <Input
                       id="country"
                       value={formData.country}
@@ -1061,7 +1065,7 @@ const BecomeVendor = () => {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="ntnNumber">NTN Number (Optional)</Label>
+                  <Label htmlFor="ntnNumber">{t('becomeVendor.ntnNumber')}</Label>
                   <Input
                     id="ntnNumber"
                     value={formData.ntnNumber}
@@ -1069,7 +1073,7 @@ const BecomeVendor = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="storeDescription">Store Description *</Label>
+                  <Label htmlFor="storeDescription">{t('becomeVendor.storeDescLabel')}</Label>
                   <Textarea
                     id="storeDescription"
                     value={formData.storeDescription}
@@ -1083,27 +1087,27 @@ const BecomeVendor = () => {
 
               {/* Product Details */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Product Details</h3>
+                <h3 className="text-lg font-semibold">{t('becomeVendor.productDetails')}</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="mainCategory">Main Category *</Label>
+                    <Label htmlFor="mainCategory">{t('becomeVendor.mainCategory')}</Label>
                     <Select value={formData.mainCategory} onValueChange={(value) => handleChange("mainCategory", value)}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select category" />
+                        <SelectValue placeholder={t('becomeVendor.selectCategory')} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Electronics">Electronics</SelectItem>
-                        <SelectItem value="Fashion">Fashion</SelectItem>
-                        <SelectItem value="Home">Home & Living</SelectItem>
-                        <SelectItem value="Beauty">Beauty & Health</SelectItem>
-                        <SelectItem value="Sports">Sports & Outdoors</SelectItem>
-                        <SelectItem value="Other">Other</SelectItem>
+                        <SelectItem value="Electronics">{t('categories.electronics')}</SelectItem>
+                        <SelectItem value="Fashion">{t('categories.fashion')}</SelectItem>
+                        <SelectItem value="Home">{t('categories.homeLiving')}</SelectItem>
+                        <SelectItem value="Beauty">{t('becomeVendor.beautyHealth')}</SelectItem>
+                        <SelectItem value="Sports">{t('becomeVendor.sportsOutdoors')}</SelectItem>
+                        <SelectItem value="Other">{t('becomeVendor.other')}</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.mainCategory && <p className="text-sm text-destructive mt-1">{errors.mainCategory}</p>}
                   </div>
                   <div>
-                    <Label htmlFor="subCategory">Sub Category</Label>
+                    <Label htmlFor="subCategory">{t('becomeVendor.subCategory')}</Label>
                     <Input
                       id="subCategory"
                       value={formData.subCategory}
@@ -1113,7 +1117,7 @@ const BecomeVendor = () => {
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="plannedProducts">Planned Products</Label>
+                    <Label htmlFor="plannedProducts">{t('becomeVendor.plannedProducts')}</Label>
                     <Input
                       id="plannedProducts"
                       type="number"
@@ -1122,7 +1126,7 @@ const BecomeVendor = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="pricingRange">Average Pricing Range</Label>
+                    <Label htmlFor="pricingRange">{t('becomeVendor.avgPricingRange')}</Label>
                     <Input
                       id="pricingRange"
                       placeholder="e.g. $10 - $100"
@@ -1135,10 +1139,10 @@ const BecomeVendor = () => {
 
               {/* Bank Information */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Bank / Payment Information</h3>
+                <h3 className="text-lg font-semibold">{t('becomeVendor.bankInfo')}</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="bankName">Bank Name *</Label>
+                    <Label htmlFor="bankName">{t('becomeVendor.bankName')}</Label>
                     <Input
                       id="bankName"
                       value={formData.bankName}
@@ -1148,7 +1152,7 @@ const BecomeVendor = () => {
                     {errors.bankName && <p className="text-sm text-destructive mt-1">{errors.bankName}</p>}
                   </div>
                   <div>
-                    <Label htmlFor="accountTitle">Account Title *</Label>
+                    <Label htmlFor="accountTitle">{t('becomeVendor.accountTitle')}</Label>
                     <Input
                       id="accountTitle"
                       value={formData.accountTitle}
@@ -1159,7 +1163,7 @@ const BecomeVendor = () => {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="accountNumber">Account Number / IBAN *</Label>
+                  <Label htmlFor="accountNumber">{t('becomeVendor.accountNumber')}</Label>
                   <Input
                     id="accountNumber"
                     value={formData.accountNumber}
@@ -1172,13 +1176,13 @@ const BecomeVendor = () => {
 
               {/* KYC Documents */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">KYC Documents (Required for Approval)</h3>
+                <h3 className="text-lg font-semibold">{t('becomeVendor.kycDocuments')}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Please upload clear copies of the following documents. All documents are required for vendor approval.
+                  {t('becomeVendor.kycDescription')}
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
                   <DocumentUpload
-                    label="Business License"
+                    label={t('becomeVendor.businessLicense')}
                     documentType="business_license"
                     currentUrl={formData.businessLicenseUrl}
                     onUploadComplete={(url) => handleChange("businessLicenseUrl", url)}
@@ -1186,7 +1190,7 @@ const BecomeVendor = () => {
                     required
                   />
                   <DocumentUpload
-                    label="NTN Certificate"
+                    label={t('becomeVendor.ntnCertificate')}
                     documentType="ntn_certificate"
                     currentUrl={formData.ntnCertificateUrl}
                     onUploadComplete={(url) => handleChange("ntnCertificateUrl", url)}
@@ -1194,7 +1198,7 @@ const BecomeVendor = () => {
                     required
                   />
                   <DocumentUpload
-                    label="ID Proof (CNIC/Passport)"
+                    label={t('becomeVendor.idProof')}
                     documentType="id_proof"
                     currentUrl={formData.idProofUrl}
                     onUploadComplete={(url) => handleChange("idProofUrl", url)}
@@ -1202,7 +1206,7 @@ const BecomeVendor = () => {
                     required
                   />
                   <DocumentUpload
-                    label="Bank Statement"
+                    label={t('becomeVendor.bankStatement')}
                     documentType="bank_statement"
                     currentUrl={formData.bankStatementUrl}
                     onUploadComplete={(url) => handleChange("bankStatementUrl", url)}
@@ -1220,7 +1224,7 @@ const BecomeVendor = () => {
                   onCheckedChange={(checked) => handleChange("agreeToTerms", checked)}
                 />
                 <Label htmlFor="agreeToTerms" className="cursor-pointer">
-                  I agree to the Terms & Conditions *
+                  {t('becomeVendor.agreeToTerms')}
                 </Label>
               </div>
               {errors.agreeToTerms && <p className="text-sm text-destructive">{errors.agreeToTerms}</p>}
@@ -1230,10 +1234,10 @@ const BecomeVendor = () => {
                 {loading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Submitting Application...
+                    {t('becomeVendor.submittingApplication')}
                   </>
                 ) : (
-                  "Submit Application"
+                  t('becomeVendor.submitApplication')
                 )}
               </Button>
             </form>
@@ -1247,3 +1251,4 @@ const BecomeVendor = () => {
 };
 
 export default BecomeVendor;
+
