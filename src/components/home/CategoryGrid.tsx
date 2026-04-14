@@ -171,9 +171,12 @@ const CategoryGrid = () => {
 />
 
               {/* Brand Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br 
+              {/* <div className="absolute inset-0 bg-gradient-to-br 
               from-primary/70 via-primary/40 to-transparent 
               opacity-60 group-hover:opacity-75 
+              transition-all duration-700" /> */}
+                        <div className="absolute inset-0 to-transparent 
+              opacity-60 group-hover:opacity-75
               transition-all duration-700" />
 
               {/* Content */}
